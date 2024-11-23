@@ -1,0 +1,112 @@
+2024-11-21 02:19:10,742 - app - INFO - Método de login llamado
+2024-11-21 02:19:10,742 - app - INFO - Método de login llamado
+2024-11-21 02:19:10,768 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 02:19:10,768 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 02:19:18,228 - app - INFO - Método de login llamado
+2024-11-21 02:19:18,228 - app - INFO - Método de login llamado
+2024-11-21 02:19:18,231 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 02:19:18,231 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 02:19:18,728 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 02:19:18,728 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 02:21:20,831 - app - INFO - Método de login llamado
+2024-11-21 02:21:20,831 - app - INFO - Método de login llamado
+2024-11-21 02:21:20,852 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 02:21:20,852 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 02:21:27,903 - app - INFO - Método de login llamado
+2024-11-21 02:21:27,903 - app - INFO - Método de login llamado
+2024-11-21 02:21:37,202 - app - INFO - Método de login llamado
+2024-11-21 02:21:37,202 - app - INFO - Método de login llamado
+2024-11-21 02:21:37,204 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 02:21:37,204 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 02:21:37,716 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 02:21:37,716 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 02:22:14,953 - app - INFO - Método de login llamado
+2024-11-21 02:22:14,953 - app - INFO - Método de login llamado
+2024-11-21 02:22:14,957 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 02:22:14,957 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 02:22:23,221 - app - INFO - Método de login llamado
+2024-11-21 02:22:23,221 - app - INFO - Método de login llamado
+2024-11-21 02:22:23,222 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 02:22:23,222 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 02:22:23,722 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 02:22:23,722 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 17:36:45,872 - app - INFO - Método de login llamado
+2024-11-21 17:36:45,872 - app - INFO - Método de login llamado
+2024-11-21 17:36:45,930 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 17:36:45,930 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 17:36:56,687 - app - INFO - Método de login llamado
+2024-11-21 17:36:56,687 - app - INFO - Método de login llamado
+2024-11-21 17:37:10,058 - app - INFO - Método de login llamado
+2024-11-21 17:37:10,058 - app - INFO - Método de login llamado
+2024-11-21 17:37:10,060 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 17:37:10,060 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 17:37:10,576 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 17:37:10,576 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 18:14:43,286 - app - INFO - Método de login llamado
+2024-11-21 18:14:43,286 - app - INFO - Método de login llamado
+2024-11-21 18:14:43,322 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 18:14:43,322 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 18:14:54,223 - app - INFO - Método de login llamado
+2024-11-21 18:14:54,223 - app - INFO - Método de login llamado
+2024-11-21 18:14:54,226 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 18:14:54,226 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 18:14:54,817 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 18:14:54,817 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 18:14:54,854 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:14:54,854 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:16:43,955 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:16:43,955 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:17:03,749 - app - INFO - Método de login llamado
+2024-11-21 18:17:03,749 - app - INFO - Método de login llamado
+2024-11-21 18:17:03,777 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 18:17:03,777 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 18:17:16,208 - app - INFO - Método de login llamado
+2024-11-21 18:17:16,208 - app - INFO - Método de login llamado
+2024-11-21 18:17:16,211 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 18:17:16,211 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 18:17:16,721 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 18:17:16,721 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 18:17:16,739 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:17:16,739 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:32:54,314 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:32:54,314 - app - ERROR - Error al cargar la página principal: Could not build url for endpoint 'historial_encuestas'. Did you mean 'add_question' instead?
+2024-11-21 18:36:13,667 - app - INFO - Método de login llamado
+2024-11-21 18:36:13,667 - app - INFO - Método de login llamado
+2024-11-21 18:36:13,690 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 18:36:13,690 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 18:36:20,374 - app - INFO - Método de login llamado
+2024-11-21 18:36:20,374 - app - INFO - Método de login llamado
+2024-11-21 18:36:20,376 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 18:36:20,376 - app - INFO - Intento de login para usuario: santiago3232
+2024-11-21 18:36:20,867 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 18:36:20,867 - app - INFO - Login exitoso para usuario: santiago3232
+2024-11-21 20:25:25,432 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 20:33:12,048 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 20:34:23,607 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-21 23:38:13,793 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-22 00:20:14,578 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-22 09:43:18,253 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-22 10:03:48,714 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-22 22:32:45,553 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-22 23:30:16,701 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-22 23:45:44,990 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-23 00:01:58,909 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-23 00:02:05,531 - app - ERROR - Error al cargar la página principal: (pymysql.err.OperationalError) (1054, "Unknown column 'surveys.public_access_key' in 'field list'")
+[SQL: SELECT surveys.id AS surveys_id, surveys.title AS surveys_title, surveys.description AS surveys_description, surveys.created_at AS surveys_created_at, surveys.user_id AS surveys_user_id, surveys.public_access_key AS surveys_public_access_key, surveys.is_public AS surveys_is_public 
+FROM surveys 
+WHERE surveys.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 13}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-23 00:02:12,962 - app - ERROR - Error al crear la encuesta: (pymysql.err.OperationalError) (1054, "Unknown column 'public_access_key' in 'field list'")
+[SQL: INSERT INTO surveys (title, description, created_at, user_id, public_access_key, is_public) VALUES (%(title)s, %(description)s, %(created_at)s, %(user_id)s, %(public_access_key)s, %(is_public)s)]
+[parameters: {'title': 'edfds', 'description': 'ewfsd', 'created_at': datetime.datetime(2024, 11, 23, 5, 2, 12, 961021), 'user_id': 13, 'public_access_key': 'Yn9KFUe04QPsA5jRDrp3PA', 'is_public': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-23 00:05:50,221 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-23 00:05:57,232 - app - ERROR - Error al cargar la página principal: (pymysql.err.OperationalError) (1054, "Unknown column 'surveys.is_public' in 'field list'")
+[SQL: SELECT surveys.id AS surveys_id, surveys.title AS surveys_title, surveys.description AS surveys_description, surveys.created_at AS surveys_created_at, surveys.user_id AS surveys_user_id, surveys.public_access_key AS surveys_public_access_key, surveys.is_public AS surveys_is_public 
+FROM surveys 
+WHERE surveys.user_id = %(user_id_1)s]
+[parameters: {'user_id_1': 13}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-23 00:26:45,341 - app - INFO - Usuario ya autenticado, forzando logout
+2024-11-23 00:27:03,998 - app - ERROR - Error al crear la encuesta: Could not build url for endpoint 'join_survey' with values ['access_key']. Did you mean 'view_survey' instead?

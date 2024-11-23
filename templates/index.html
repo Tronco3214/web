@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickCap - Encuestas Disponibles</title>
+    <style>
+        /* Variables de color */
+        :root {
+            --primary-color: #6200ee; /* Morado */
+            --secondary-color: #ffc107; /* Amarillo */
+        }
+
+        /* Estilos base */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Estilos de navegación */
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            background-color: var(--primary-color);
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 1rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Estilos de encuestas */
+        .survey-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .survey-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .survey-card:hover {
+            transform: scale(1.02);
+        }
+
+        .survey-title {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .survey-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        /* Botones */
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ffca28;
+        }
+
+        .view-survey-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .view-survey-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Imagen de encuesta */
+        .survey-image {
+            max-width: 200px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* Estado vacío */
+        .empty-state {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Salir</a></li>
+            <li><a href="/surveys">Encuestas</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-3xl font-bold text-orange-400 mb-6">Encuestas Disponibles</h1>
+
+        <a href="/survey/create" class="cta-button mb-6">
+            Crear Nueva Encuesta
+        </a>
+
+        <div class="survey-list"> 
+           
+            <!-- Estado vacío -->
+            <div class="empty-state">
+                <p>No hay encuestas disponibles. ¡Crea una nueva encuesta para comenzar!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 QuickCap - QuickCap</p>
+    </footer>
+</body>
+</html>
+    

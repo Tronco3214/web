@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickCap - Iniciar Sesión</title>
+    <style>
+        /* Variables de color */
+        :root {
+            --primary-color: #6200ee; /* Morado */
+            --secondary-color: #ffc107; /* Amarillo */
+        }
+
+        /* Estilos base */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0dcaf0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .input-group i {
+            padding: 0.5rem 1rem;
+            color: var(--secondary-color);
+        }
+
+        .input-group input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.75rem 1rem;
+        }
+
+        .login-button {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #ffca28;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .register-link a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .flash-message {
+            border-radius: 10px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .flash-success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .flash-danger {
+            background-color: #F44336;
+            color: white;
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="text-center mb-6">
+            <img src="logo.png" 
+                 alt="QuickCap Logo" 
+                 class="logo"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwZDZlZmQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTcgMjFoLTEwYS0yIDItMCAwIDEtMi0ydi0xNGEyIDItMCAwIDEgMi0yaDEyYTIgMi0wIDAgMSAyIDJ2MTJhMiAyLTAgMCAxLTIgMnoiPjwvcGF0aD48cGF0aCBkPSJNOSA3aDYiPjwvcGF0aD48cGF0aCBkPSJNOSAxMWg2Ij48L3BhdGg+PHBhdGggZD0iTTkgMTVoNCI+PC9wYXRoPjwvc3ZnPg=='">
+            <h2 class="text-2xl font-bold" style="color: var(--secondary-color);">QuickCap</h2>
+            <p style="color: rgba(255,255,255,0.7);">Ingresa tus credenciales para continuar</p>
+        </div>
+
+        <form method="POST" action="/login">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" 
+                       name="username" 
+                       placeholder="Usuario" 
+                       required
+                       autofocus>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" 
+                       name="password" 
+                       placeholder="Contraseña" 
+                       required>
+            </div>
+
+            <button type="submit" class="login-button">
+                Iniciar Sesión
+            </button>
+        </form>
+
+        <div class="register-link">
+            <p>¿No tienes una cuenta? 
+                <a href="/register">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickCap - {{ survey.title }}</title>
+    <style>
+        /* Variables de color */
+        :root {
+            --primary-color: #6200ee;
+            --secondary-color: #ffc107;
+        }
+
+        /* Estilos base existentes... */
+        /* [Mantener todos los estilos anteriores hasta .alert-danger] */
+
+        /* Nuevos estilos para el enlace de compartir */
+        .share-section {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .share-title {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-link-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .share-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .copy-button {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #ffca28;
+        }
+
+        .share-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .share-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .share-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .copy-success {
+            color: #4caf50;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="{{ url_for('index') }}">QuickCap</a>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" href="{{ url_for('index') }}">Inicio</a></li>
+            <li><a class="nav-link" href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mensajes Flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="survey-container">
+        <!-- Sección de compartir (solo visible para el creador) -->
+        {% if current_user.id == survey.user_id %}
+            <div class="share-section">
+                <h2 class="share-title">
+                    <i class="fas fa-share-alt"></i>
+                    Compartir encuesta
+                </h2>
+                <div class="share-link-container">
+                    <input type="text" 
+                           class="share-input" 
+                           id="shareLink" 
+                           value="{{ url_for('join_survey', access_key=survey.public_access_key, _external=True) }}" 
+                           readonly>
+                    <button class="copy-button" onclick="copyShareLink()">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <p id="copySuccess" class="copy-success">¡Enlace copiado!</p>
+                <div class="share-options">
+                    <button class="share-button" onclick="shareWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="share-button" onclick="shareEmail()">
+                        <i class="far fa-envelope"></i> Email
+                    </button>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Encabezado de la Encuesta -->
+        <div class="survey-section">
+            <h1 class="survey-title">{{ survey.title }}</h1>
+            <p class="survey-description">{{ survey.description }}</p>
+            <div style="color: rgba(255,255,255,0.7);">
+                <p>Creada por: {{ survey.user.username if survey.user else 'Usuario Desconocido' }}</p>
+                <p>Fecha de creación: {{ survey.created_at.strftime('%d/%m/%Y %H:%M') if survey.created_at else 'Fecha desconocida' }}</p>
+            </div>
+        </div>
+
+        <!-- Preguntas de la Encuesta -->
+        <div class="survey-section">
+            <h2><i class="fas fa-question-circle"></i> Preguntas</h2>
+            {% if survey.questions %}
+                <form id="surveyForm" action="{{ url_for('join_survey', access_key=survey.public_access_key) if not current_user.is_authenticated else url_for('submit_survey', survey_id=survey.id) }}" method="POST">
+                    {% for question in survey.questions %}
+                        <div class="mb-4">
+                            <h3 style="color: var(--secondary-color);">{{ loop.index }}. {{ question.text }}</h3>
+                            
+                            {% if question.type == 'multiple_choice' %}
+                                {% for option in question.options %}
+                                    <div class="form-check">
+                                        <input type="radio" 
+                                               name="question_{{ question.id }}" 
+                                               value="{{ option.id }}"
+                                               class="form-check-input"
+                                               required>
+                                        <label class="form-check-label">{{ option.text }}</label>
+                                    </div>
+                                {% endfor %}
+                            
+                            {% elif question.type == 'text' %}
+                                <div class="input-group">
+                                    <textarea class="form-control"
+                                              name="question_{{ question.id }}"
+                                              rows="3"
+                                              placeholder="Escribe tu respuesta aquí"
+                                              required></textarea>
+                                </div>
+                            
+                            {% elif question.type == 'scale' %}
+                                <div class="range-container">
+                                    <input type="range" 
+                                           class="form-range"
+                                           name="question_{{ question.id }}"
+                                           min="1"
+                                           max="10"
+                                           required>
+                                    <span class="range-value">5</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ url_for('index') }}" class="btn-secondary">Volver</a>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Enviar Respuestas
+                        </button>
+                    </div>
+                </form>
+            {% else %}
+                <div class="alert alert-warning">
+                    No hay preguntas disponibles para esta encuesta.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Script para el rango de valores
+        document.querySelectorAll('input[type="range"]').forEach(function(range) {
+            const valueDisplay = range.nextElementSibling;
+            range.addEventListener('input', function() {
+                valueDisplay.textContent = this.value;
+            });
+        });
+
+        // Funciones para compartir
+        function copyShareLink() {
+            const shareInput = document.getElementById('shareLink');
+            shareInput.select();
+            document.execCommand('copy');
+            
+            const copySuccess = document.getElementById('copySuccess');
+            copySuccess.style.display = 'block';
+            setTimeout(() => {
+                copySuccess.style.display = 'none';
+            }, 2000);
+        }
+
+        function shareWhatsApp() {
+            const shareLink = document.getElementById('shareLink').value;
+            const text = encodeURIComponent(`¡Te invito a participar en mi encuesta!\n${shareLink}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        function shareEmail() {
+            const shareLink = document.getElementById('shareLink').value;
+            const subject = encodeURIComponent('Invitación a participar en encuesta');
+            const body = encodeURIComponent(`Te invito a participar en mi encuesta:\n\n${shareLink}`);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>

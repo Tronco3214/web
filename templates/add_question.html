@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Pregunta</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="quickcap-logo">
+            <h1>QuickCap</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Volver al Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Agregar Pregunta a la Encuesta: {{ survey.title }}</h2>
+            <form action="{{ url_for('add_question', survey_id=survey.id) }}" method="POST">
+                <label for="question_text">Texto de la Pregunta:</label>
+                <textarea id="question_text" name="question_text" rows="4" required></textarea>
+                <br>
+                <button type="submit" class="cta-button">Agregar Pregunta</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Preguntas Existentes</h2>
+            <ul>
+                {% for question in survey.questions %}
+                    <li>{{ question.text }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 QuickCap. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Encuesta - QuickCap</title>
+    <style>
+        :root {
+            --primary-color: #6200ee;
+            --secondary-color: #ffc107;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+        .list-group {
+            margin-bottom: 1.5rem;
+        }
+        .list-group-item {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Editar Encuesta</h1>
+        
+        <form method="POST" action="{{ url_for('edit_survey', survey_id=survey.id) }}">
+            <div class="form-group">
+                <label for="title">Título de la Encuesta</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ survey.title }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea class="form-control" id="description" name="description" rows="3">{{ survey.description }}</textarea>
+            </div>
+            
+            <div class="form-group">
+                <h3>Preguntas Actuales</h3>
+                {% if survey.questions %}
+                    <ul class="list-group">
+                        {% for question in survey.questions %}
+                            <li class="list-group-item">{{ question.text }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">No hay preguntas en esta encuesta.</p>
+                {% endif %}
+            </div>
+            
+            <div class="actions flex justify-between">
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <a href="{{ url_for('view_survey', survey_id=survey.id) }}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

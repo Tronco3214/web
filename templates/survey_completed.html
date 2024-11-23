@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-success">
+        <h4 class="alert-heading">¡Gracias por completar la encuesta!</h4>
+        <p>Tus respuestas han sido registradas exitosamente.</p>
+    </div>
+    
+    {% if survey.user_id == current_user.id %}
+        <a href="{{ url_for('view_survey', survey_id=survey.id) }}" 
+           class="btn btn-primary">
+            Volver a la encuesta
+        </a>
+    {% else %}
+        <a href="{{ url_for('home') }}" class="btn btn-primary">
+            Volver al inicio
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

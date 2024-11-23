@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Encuesta</title>
+    <style>
+        :root {
+            --color-primario: #6200ee;
+            --color-secundario: #ffc107;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-primario);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .formulario-encuesta {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .etiqueta-formulario {
+            color: var(--color-secundario);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-weight: bold;
+        }
+
+        .entrada-formulario {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .pregunta-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .tipo-pregunta {
+            margin: 1rem 0;
+        }
+
+        .opciones-container {
+            margin-left: 1.5rem;
+        }
+
+        .opcion-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            background-color: var(--color-secundario);
+            color: var(--color-primario);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0.5rem;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-agregar {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .mensaje-alerta {
+            background-color: #ff9100;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        select.entrada-formulario {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        select.entrada-formulario option {
+            background-color: var(--color-primario);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Nueva Encuesta</h1>
+        
+        <form id="surveyForm" class="formulario-encuesta" method="POST">
+            <div>
+                <label class="etiqueta-formulario">Título de la Encuesta</label>
+                <input type="text" name="title" class="entrada-formulario" required>
+            </div>
+
+            <div>
+                <label class="etiqueta-formulario">Descripción</label>
+                <textarea name="description" class="entrada-formulario" rows="3"></textarea>
+            </div>
+
+            <div id="preguntas-container"></div>
+
+            <button type="button" class="btn btn-agregar" onclick="agregarPregunta()">
+                Agregar Pregunta
+            </button>
+
+            <button type="submit" class="btn">Crear Encuesta</button>
+        </form>
+    </div>
+
+    <script>
+        let contadorPreguntas = 0;
+
+        function agregarPregunta() {
+            const container = document.getElementById('preguntas-container');
+            const preguntaDiv = document.createElement('div');
+            preguntaDiv.className = 'pregunta-container';
+            preguntaDiv.id = `pregunta-${contadorPreguntas}`;
+
+            preguntaDiv.innerHTML = `
+                <label class="etiqueta-formulario">Pregunta ${contadorPreguntas + 1}</label>
+                <input type="text" name="questions[${contadorPreguntas}][text]" class="entrada-formulario" required>
+                
+                <div class="tipo-pregunta">
+                    <label class="etiqueta-formulario">Tipo de Pregunta</label>
+                    <select name="questions[${contadorPreguntas}][type]" class="entrada-formulario" onchange="manejarCambioTipo(this)">
+                        <option value="text">Texto Libre</option>
+                        <option value="single">Opción Única</option>
+                        <option value="multiple">Opción Múltiple</option>
+                        <option value="scale">Escala (1-5)</option>
+                    </select>
+                </div>
+
+                <div class="opciones-container" id="opciones-${contadorPreguntas}" style="display: none;">
+                    <button type="button" class="btn" onclick="agregarOpcion(${contadorPreguntas})">
+                        Agregar Opción
+                    </button>
+                </div>
+
+                <button type="button" class="btn btn-danger" onclick="eliminarPregunta(${contadorPreguntas})">
+                    Eliminar Pregunta
+                </button>
+            `;
+
+            container.appendChild(preguntaDiv);
+            contadorPreguntas++;
+        }
+
+        function manejarCambioTipo(select) {
+            const preguntaId = select.closest('.pregunta-container').id.split('-')[1];
+            const opcionesContainer = document.getElementById(`opciones-${preguntaId}`);
+            
+            if (select.value === 'single' || select.value === 'multiple') {
+                opcionesContainer.style.display = 'block';
+            } else {
+                opcionesContainer.style.display = 'none';
+            }
+        }
+
+        function agregarOpcion(preguntaId) {
+            const opcionesContainer = document.getElementById(`opciones-${preguntaId}`);
+            const opcionCount = opcionesContainer.getElementsByClassName('opcion-item').length;
+            
+            const opcionDiv = document.createElement('div');
+            opcionDiv.className = 'opcion-item';
+            opcionDiv.innerHTML = `
+                <input type="text" name="questions[${preguntaId}][options][]" 
+                       class="entrada-formulario" style="width: 80%;" 
+                       placeholder="Opción ${opcionCount + 1}" required>
+                <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">
+                    Eliminar
+                </button>
+            `;
+            
+            opcionesContainer.appendChild(opcionDiv);
+        }
+
+        function eliminarPregunta(id) {
+            document.getElementById(`pregunta-${id}`).remove();
+        }
+
+        // Agregar primera pregunta automáticamente
+        window.onload = () => agregarPregunta();
+    </script>
+</body>
+</html>

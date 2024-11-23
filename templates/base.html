@@ -1,0 +1,29 @@
+<nav class="bg-purple-800 shadow-lg">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <a href="{{ url_for('dashboard') }}" class="text-xl font-bold text-orange-400">
+                QuickCap
+            </a>
+            {% if session['user_id'] %}
+                <div class="flex items-center space-x-4">
+                    <span class="text-orange-200">Bienvenido, {{ session['username'] }}</span>
+                    <a href="{{ url_for('logout') }}" 
+                       class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">
+                        Cerrar Sesión
+                    </a>
+                </div>
+            {% else %}
+                <div class="space-x-4">
+                    <a href="{{ url_for('login') }}" 
+                       class="text-orange-400 hover:text-orange-300">
+                        Iniciar Sesión
+                    </a>
+                    <a href="{{ url_for('register') }}" 
+                       class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">
+                        Registrarse
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
